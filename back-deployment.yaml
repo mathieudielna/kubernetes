@@ -1,9 +1,10 @@
-apiVersion: apps/v1
+# Secret.yml + configmap.yml
+apiVersion: v1
 kind: Deployment
 metadata:
   name: api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: api
@@ -19,11 +20,9 @@ spec:
         - containerPort: 3000
         env:
         - name: MONGO_USER
-          value: "root"
+          value: root
         - name: MONGO_PASSWORD
-          value: "root"
+          value: root
         - name: MONGO_HOST
-          value: "localhost"
-
-# Secret.yaml + configmap.yaml
+          value: localhost
 

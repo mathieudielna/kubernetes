@@ -3,17 +3,16 @@
 # docker build -t mathieudielna/front-kubernetes:latest .
 # docker build -t api:latest ./api
 
+# Supprimer toutes les ressources Kubernetes, si nécessaire (commenté pour la sécurité)
 # kubectl delete all --all --all-namespaces
 
 # Appliquer les configurations Kubernetes
-kubectl apply -f ./mongodb-deployment.yml
-kubectl apply -f ./mongodb-service.yml
-kubectl apply -f ./front-deployment.yml
-kubectl apply -f ./front-service.yml  
-# kubectl apply -f ./back-deployment.yml
-# kubectl apply -f ./back-service.yml
+kubectl apply -f ./secret.yml  # Appliquer le fichier de secrets en premier
+kubectl apply -f ./mongodb.yml
+kubectl apply -f ./angular.yml
+kubectl apply -f ./node.yml
 
-# Vérifier les déploiements
+
+# Vérifier les déploiements et services
 kubectl get all
-#kubectl get services
-
+kubectl get services

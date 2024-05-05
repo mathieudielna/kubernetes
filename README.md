@@ -34,7 +34,7 @@ kubectl delete all --all --all-namespaces
 
 kubectl delete pod --selector=app=front
 
-
+kubectl logs pods_id
 
 docker tag front  mathieudielna/front-kubernetes:latest
 docker push mathieudielna/front-kubernetes:latest      
@@ -58,3 +58,5 @@ minikube dashboard
 kubectl create deployment front --image=mathieudielna/front-kubernetes:latest
 
 kubectl port-forward front-deployment-67bc598f8f-f9vvw  8080:80 
+
+echo -n 'info' | base64

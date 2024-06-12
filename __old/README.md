@@ -36,7 +36,7 @@ kubectl delete pod --selector=app=front
 
 kubectl logs pods_id
 
-docker tag front  mathieudielna/front-kubernetes:latest
+docker tag back_node  mathieudielna/node-template:tagname
 docker push mathieudielna/front-kubernetes:latest      
 
  kubectl describe service front-service

@@ -34,22 +34,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongodb-service
+  name: mongodb-test
+  labels:
+    app: database
 spec:
-  type: ClusterIP
+  clusterIP: None
   selector:
-    app: mongodb
-  ports:
-  - port: 27017
+    app: database 
 
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: db-service
-# spec:
-#   selector:
-#     app: db
-#   ports:
-#     - protocol: TCP
-#       port: 27017
-#       targetPort: 27017

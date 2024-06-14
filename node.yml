@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-node
+  template:
+    metadata:
+      labels:
+        app: backend-node
+    spec:
+      containers:
+        - name: backend-node
+          image: mathieudielna/back_node:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: MONGO_URI
+              value: "mongodb://mongo:27017/fair_pay"  # Remplacer 'mydatabase' par votre nom de base de données
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-node
+spec:
+  selector:
+    app: backend-node
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000

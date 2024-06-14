@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "kubernetes://schema/v1@pod": "k8smsx://loadkubernetescore/pod-backend-node-76dfd756bf-jhl2c.yaml?ns%3Ddefault%26value%3Dpod%2Fbackend-node-76dfd756bf-jhl2c%26_%3D1718403033482"
+    }
+}

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-node
+  name: backend-deployment
 spec:
   replicas: 1
   selector:
@@ -19,16 +19,4 @@ spec:
             - containerPort: 3000
           env:
             - name: MONGO_URI
-              value: "mongodb://mongo:27017/fair_pay"  # Remplacer 'mydatabase' par votre nom de base de données
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend-node
-spec:
-  selector:
-    app: backend-node
-  ports:
-    - protocol: TCP
-      port: 3000
-      targetPort: 3000
+              value: "mongodb://root:root@10.244.0.206:27017/fair_pay?authSource=admin"  # Remplacer 'mydatabase' par votre nom de base de données

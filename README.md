@@ -60,3 +60,5 @@ kubectl create deployment front --image=mathieudielna/front-kubernetes:latest
 kubectl port-forward front-deployment-67bc598f8f-f9vvw  8080:80 
 
 echo -n 'info' | base64
+
+kubectl exec -it backend-deployment-7c57f957f7-vjm4p   -- /bin/sh

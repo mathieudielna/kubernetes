@@ -12,6 +12,8 @@
 kubectl apply -f ./mongodb.yml
 kubectl apply -f ./angular.yml
 kubectl apply -f ./node.yml
+# kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+
 # kubectl apply -f ./ingress.yml
 
 # Vérifier les déploiements et services
@@ -31,3 +33,4 @@ kubectl get services
 # kubectl expose deployment angular-web --type=NodePort --name=angular-web
 # minikube service angular-web
 # kubectl get nodes -o wide
+# kubectl get pods -o wide -l app=mongo

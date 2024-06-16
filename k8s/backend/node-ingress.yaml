@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false" # Pour éviter la redirection HTTPS par défaut
+    nginx.ingress.kubernetes.io/use-regex: "true"    # Permet l'utilisation des regex dans les chemins
+spec:
+  rules:
+    - host: backend.localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 3000

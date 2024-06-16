@@ -2,8 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: angular-deployment
+  labels:
+    app: angular-web
 spec:
-  replicas: 5 # Number of replicas that will be created for this deployment
+  replicas: 5 # Nombre de réplicas pour ce déploiement
   selector:
     matchLabels:
       app: angular-web
@@ -17,4 +19,6 @@ spec:
           image: mathieudielna/angular-web:latest
           ports:
             - containerPort: 80
-
+          env:
+            - name: BACKEND_URL
+              value: "http://backend-service.default.svc.cluster.local"  # URL du backend

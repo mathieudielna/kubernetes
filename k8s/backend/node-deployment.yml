@@ -19,4 +19,4 @@ spec:
             - containerPort: 3000
           env:
             - name: MONGO_URI
-              value: "mongodb://root:root@10.244.0.206:27017/fair_pay?authSource=admin"  # Remplacer 'mydatabase' par votre nom de base de données
+              value: "mongodb://root:root@10.244.0.223:27017/fair_pay?authSource=admin"  # Remplacer 'mydatabase' par votre nom de base de données

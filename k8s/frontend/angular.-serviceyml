@@ -1,7 +1,9 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: angular-service
+  labels:
+    app: angular-web
 spec:
   selector:
     app: angular-web
@@ -9,5 +11,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 31000
-  type: NodePort 
+      nodePort: 31000  # Port sur lequel le service est accessible
+  type: NodePort

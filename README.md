@@ -2,7 +2,7 @@
 
 ## Introduction 
 Petit résumé de l'infrastructure utilisée au coeur du projet : 
-* `/k8s/mongoDB :` configuration de la base de donnée utilisé
+* `/k8s/mongoDB :` configuration kubernetes de la base de donnée utilisé
 * `./k8s/backend :` config kubernetes application backend - tous les paramètres sont accessible via le fichier de 
     * `node-deployment` : toute la configuration nécéssaire est disponible via le fichier suivant seul paramètre à changer :
         * `url de connexion mongoDB` : modifier avec url ingress si configuré || ou faire pointer sur l'url du pods mongoDB

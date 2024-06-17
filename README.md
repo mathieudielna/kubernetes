@@ -39,8 +39,6 @@ utilisé les url suivantes
 * `frontend`: `angular-service.default.svc.cluster.local` || `http://frontend.local`
 * `backend`: `backend-service.default.svc.cluster.local` || `http://backend.local`
 
-
-
 ```sh 
 kubectl apply -f ./k8s/mongodb 
 
@@ -48,7 +46,6 @@ kubectl apply -f ./k8s/mongodb
 kubectl apply -f ./k8s/backend 
 # changer l'url d'env angular puis build la nouvelle image frontend
 kubectl apply -f ./k8s/frontend 
-kubectl port-forward service/angular-web 8080:80 
 # login - les valeurs par défaut sont déja renseigné vous pourrez vous login puis voir les valeurs insérées par défaut 
 ```
 

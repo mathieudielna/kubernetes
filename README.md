@@ -1,5 +1,59 @@
-# Readme config 
+# Kubernetes 
 
+## Introduction 
+Petit résumé de l'infrastructure utilisée au coeur du projet : 
+* `/k8s/mongoDB :` configuration de la base de donnée utilisé
+* `./k8s/backend :` config kubernetes application backend - tous les paramètres sont accessible via le fichier de 
+    * `node-deployment` : toute la configuration nécéssaire est disponible via le fichier suivant seul paramètre à changer :
+        * `url de connexion mongoDB` : modifier avec url ingress si configuré || ou faire pointer sur l'url du pods mongoDB
+* `./k8s/frontend :` config kubernetes application frontend. 
+    * **Attention :** l'url de connexion via variable d'environement ne fonctionne pas. Il faut modifier le fichier d'environement présent dans l'app frontend et faire pointer vers **l'url ingress ou url du backend en direct.**
+    Accessible via : `./frontend/src/shared/env/` : 
+        * `env.prod :` modifier **apiBaseUrl**     
+    ```sh
+    # ensuite executer les commmandes : 
+    docker build -t angular-web:latest ./frontend 
+    # soit déployer et mettre à jour le fichier 
+    # /k8s/frontend 
+    ```
+
+***Attention de faire attention à votre pare-feu lors de l'utilisation du ingress*** 
+
+## Lancement de l'application parefeu 
+
+
+### Via IP PODS
+```sh
+kubectl apply -f ./k8s/mongodb 
+kubectl get pods -o wide -l app=mongo 
+# modifier l'url dans la config backend puis : 
+kubectl apply -f ./k8s/backend 
+# changer l'url d'env angular puis build la nouvelle image frontend
+kubectl apply -f ./k8s/frontend 
+kubectl port-forward service/angular-web 8080:80 
+# login - les valeurs par défaut sont déja renseigné vous pourrez vous login puis voir les valeurs insérées par défaut 
+```
+
+### Via ingress - Attention à votre parefeu
+utilisé les url suivantes 
+* `frontend`: `angular-service.default.svc.cluster.local` || `http://frontend.local`
+* `backend`: `backend-service.default.svc.cluster.local` || `http://backend.local`
+
+
+
+```sh 
+kubectl apply -f ./k8s/mongodb 
+
+# modifier l'url dans la config backend puis : 
+kubectl apply -f ./k8s/backend 
+# changer l'url d'env angular puis build la nouvelle image frontend
+kubectl apply -f ./k8s/frontend 
+kubectl port-forward service/angular-web 8080:80 
+# login - les valeurs par défaut sont déja renseigné vous pourrez vous login puis voir les valeurs insérées par défaut 
+```
+
+## Personal notes 
+```sh
 minikube status
 minikube start
 
@@ -62,3 +116,4 @@ kubectl port-forward front-deployment-67bc598f8f-f9vvw  8080:80
 echo -n 'info' | base64
 
 kubectl exec -it backend-deployment-7c57f957f7-vjm4p   -- /bin/sh
+```

@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"    # Permet l'utilisation des regex dans les chemins
 spec:
   rules:
-    - host: backend.localhost
+    - host: backend.local
       http:
         paths:
           - path: /

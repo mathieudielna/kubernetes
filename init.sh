@@ -34,3 +34,4 @@ kubectl get services
 # minikube service angular-web
 # kubectl get nodes -o wide
 # kubectl get pods -o wide -l app=mongo
+# kubectl exec -it bxxx   -- /bin/sh

@@ -21,4 +21,4 @@ spec:
             - containerPort: 80
           env:
             - name: BACKEND_URL
-              value: "http://backend-service.default.svc.cluster.local"  # URL du backend
+              value: "http://10.244.1.46/api/v0"  # URL du backend
